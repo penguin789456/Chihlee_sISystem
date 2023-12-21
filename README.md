@@ -1,0 +1,2 @@
+username=your_account
+password=your_password
