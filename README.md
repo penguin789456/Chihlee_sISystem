@@ -1,2 +1,1 @@
-username=your_account
-password=your_password
+Auto fill chihlee class review
