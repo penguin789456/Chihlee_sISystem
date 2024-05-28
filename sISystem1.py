@@ -40,14 +40,18 @@ class TestSISystem1():
       soup=BeautifulSoup(self.driver.page_source,"lxml")
       PINGtext=str(soup.find("div",style="font-size:17px; font-weight:bold;").text).strip()
       if(PINGtext!="導師評量"):
-        for radio in range(0,28):
-          if(radio!=1):
-            self.driver.find_element(By.ID, f"Radio1_{str(radio)}").click()
-          else:
-            self.driver.find_element(By.ID, f"Radio5_{str(radio)}").click()
+        radio=0
+        while True:
+          try:
+            if(radio!=1):
+              self.driver.find_element(By.ID, f"Radio1_{str(radio)}").click()
+            else:
+              self.driver.find_element(By.ID, f"Radio5_{str(radio)}").click()
+          except:
+            break
+          radio+=1
         self.driver.find_element(By.ID, "Button1").click()
         self.driver.switch_to.alert.accept()
-        # time.sleep(2)
         setPING=self.driver.find_element(By.XPATH, "(//a[contains(text(),\'開始評量\')])[1]")
       else:
           for radio in range(0,27):
